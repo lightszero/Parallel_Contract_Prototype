@@ -43,7 +43,10 @@ namespace Parallel_Contract_Prototype
             public string key;
             public void Add(System.Numerics.BigInteger value)
             {
-                storage[key] = storage[key] + value;
+                lock (storage)
+                {
+                    storage[key] = storage[key] + value;
+                }
             }
         }
         public class Transaction
